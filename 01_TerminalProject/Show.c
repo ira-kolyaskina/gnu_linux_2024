@@ -70,14 +70,6 @@ void create(const char* filename, char ** text, size_t text_size) {
 
     } while ((c = wgetch(win)) != 27);
 
-    // while((c = wgetch(win)) != 27) {
-    //         // wprintw(win, "  Key: %d, Name: %s\n", c, keyname(c));
-
-
-    //         box(win, 0, 0); 
-    //         wrefresh(win);
-    // }
-
     endwin();
 }
 
@@ -89,7 +81,7 @@ int main(int argc, char* argv[]) {
     }
     FILE* file = fopen(argv[1], "r");
     if (file == NULL) {
-        fprintf(stderr, "File doesn't open!\n");
+        fprintf(stderr, "File can't open!\n");
         return 1;
     }
 
@@ -111,7 +103,6 @@ int main(int argc, char* argv[]) {
     text[num_lines] = NULL;
     fclose(file);
 
-///
     create(argv[1], text, num_lines);
 
     for (int index_line = 0; index_line < num_lines; ++index_line) {

@@ -19,7 +19,7 @@ prog-a: prog.o liboutput_static.a
 prog-so: prog.o liboutput.so
 	cc -o $@ $< -L. -loutput
 
-fun.o prog.o:  outlib.h
+fun.o prog.o: outlib.h
 
 test: test0 test1 test2
 
@@ -52,5 +52,5 @@ test2: prog prog-a prog-so
 clean:
 	rm -f $(TRASH)
 
-distclean:      clean
+distclean: clean
 	rm -rf $(GENERATES)

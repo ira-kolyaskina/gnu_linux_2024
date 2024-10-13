@@ -1,0 +1,8 @@
+start 1 12 > /dev/null
+
+b range_get if p->cur % 5 == 0
+    command 2  
+        printf "@@@ %d %d %d %d\n", p->start, p->stop, p->step, p->cur
+        continue
+    end
+c

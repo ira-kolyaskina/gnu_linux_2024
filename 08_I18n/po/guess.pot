@@ -1,0 +1,41 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# ira-kolyaskina <ira.koliaskina@gmail.com>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-11 23:256+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: ira-kolyaskina <ira.koliaskina@gmail.com>\n"
+"Language-Team: Russian\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: guess.c:15
+#, c-format
+msgid "Guess a number from 1 to 100.\n"
+msgstr ""
+
+#: guess.c:21
+#, c-format
+msgid "Is your number greater than %zu? (yes/no)\n"
+msgstr ""
+
+#: guess.c:27
+msgid "yes"
+msgstr ""
+
+#: guess.c:29
+msgid "no"
+msgstr ""
+
+#: guess.c:33
+#, c-format
+msgid "Your number is %zu\n"
+msgstr ""

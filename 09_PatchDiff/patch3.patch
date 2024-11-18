@@ -1,0 +1,20 @@
+--- tmp3.c	2024-11-18 23:49:29.044738862 +0300
++++ tmp4.c	2024-11-18 23:53:28.289034893 +0300
+@@ -108,11 +108,12 @@
+ }
+ 
+ int main(int argc, char *argv[]) {
+-    if (argc == 3) {
+-        PATH = argv[1][0];
+-        WALL = argv[1][1];
+-        WIDTH = atoi(argv[2]);
+-        HEIGHT = atoi(argv[2]);
++    if (argc == 4) {
++        srand(atoi(argv[1]));
++        PATH = argv[2][0];
++        WALL = argv[2][1];
++        WIDTH = atoi(argv[3]);
++        HEIGHT = atoi(argv[3]);
+     } else {
+         printf("Wrong number of arguments.\n");
+         exit(1);

@@ -1,0 +1,84 @@
+--- create_lab0.c	2024-11-18 23:42:40.263189358 +0300
++++ tmp2.c	2024-11-18 23:49:35.525718747 +0300
+@@ -2,19 +2,28 @@
+ #include <stdlib.h>
+ #include <time.h>
+ 
+-#define WIDTH 6
+-#define HEIGHT 6
+-#define MAZE_WIDTH (WIDTH * 2 + 1)
+-#define MAZE_HEIGHT (HEIGHT * 2 + 1)
++#define DEFAULT_WIDTH 6
++#define DEFAULT_HEIGHT 6
+ 
+ #define WALL '#'
+ #define PATH '.'
+ 
++int WIDTH = DEFAULT_WIDTH;
++int HEIGHT = DEFAULT_HEIGHT;
++
+ typedef struct {
+-    char grid[MAZE_HEIGHT][MAZE_WIDTH];
++    char** grid;
+ } Maze;
+ 
+ void initMaze(Maze *maze) {
++    int MAZE_WIDTH = WIDTH * 2 + 1;
++    int MAZE_HEIGHT = HEIGHT * 2 + 1;
++
++    maze->grid = (char **)malloc(MAZE_HEIGHT * sizeof(char *));
++    for (int i = 0; i < MAZE_HEIGHT; i++) {
++        maze->grid[i] = (char *)malloc(MAZE_WIDTH * sizeof(char));
++    }
++
+     for (int i = 0; i < MAZE_HEIGHT; i++) {
+         for (int j = 0; j < MAZE_WIDTH; j++) {
+             if (i % 2 == 0 || j % 2 == 0) {
+@@ -62,6 +71,11 @@
+ 
+ 
+ void generateMaze(Maze *maze) {
++    if (WIDTH <= 0 || HEIGHT <= 0) {
++        printf("Invalid maze size.\n");
++        exit(1);
++    }
++
+     int** visited = malloc(WIDTH * sizeof(int*));
+     for (int i = 0; i < WIDTH; ++i) {
+         visited[i] = malloc(HEIGHT * sizeof(int));
+@@ -79,6 +93,9 @@
+ }
+ 
+ void printMaze(Maze *maze) {
++    int MAZE_WIDTH = WIDTH * 2 + 1;
++    int MAZE_HEIGHT = HEIGHT * 2 + 1;
++
+     for (int i = 0; i < MAZE_HEIGHT; i++) {
+         for (int j = 0; j < MAZE_WIDTH; j++) {
+             printf("%c", maze->grid[i][j]);
+@@ -87,12 +104,24 @@
+     }
+ }
+ 
+-int main() {
++int main(int argc, char *argv[]) {
++    if (argc == 2) {
++        WIDTH = atoi(argv[1]);
++        HEIGHT = atoi(argv[1]);
++    } else {
++        printf("Wrong number of arguments.\n");
++        exit(1);
++    }
+     Maze maze;
+     initMaze(&maze);
+     generateMaze(&maze);
+ 
+     printMaze(&maze);
+ 
++    for (int i = 0; i < HEIGHT * 2 + 1; i++) {
++        free(maze.grid[i]);
++    }
++    free(maze.grid);
++
+     return 0;
+ }

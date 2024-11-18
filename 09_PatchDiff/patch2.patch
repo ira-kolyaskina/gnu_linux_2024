@@ -1,0 +1,35 @@
+--- tmp2.c	2024-11-18 23:49:35.525718747 +0300
++++ tmp3.c	2024-11-18 23:49:29.044738862 +0300
+@@ -5,12 +5,15 @@
+ #define DEFAULT_WIDTH 6
+ #define DEFAULT_HEIGHT 6
+ 
+-#define WALL '#'
+-#define PATH '.'
++#define DEFAULT_WALL '#'
++#define DEFAULT_PATH '.'
+ 
+ int WIDTH = DEFAULT_WIDTH;
+ int HEIGHT = DEFAULT_HEIGHT;
+ 
++char WALL = DEFAULT_WALL;
++char PATH = DEFAULT_PATH;
++
+ typedef struct {
+     char** grid;
+ } Maze;
+@@ -105,9 +108,11 @@
+ }
+ 
+ int main(int argc, char *argv[]) {
+-    if (argc == 2) {
+-        WIDTH = atoi(argv[1]);
+-        HEIGHT = atoi(argv[1]);
++    if (argc == 3) {
++        PATH = argv[1][0];
++        WALL = argv[1][1];
++        WIDTH = atoi(argv[2]);
++        HEIGHT = atoi(argv[2]);
+     } else {
+         printf("Wrong number of arguments.\n");
+         exit(1);
